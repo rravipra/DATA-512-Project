@@ -39,11 +39,13 @@ The notebooks file in this repository are:
 
 # Data Files created from the code:
 
-1) academy_monthly_desktop_20150101-20230401.json
-2) academy_monthly_mobile_20150101-20230401.json
-3) academy_monthly_cumulative_20150101-20230401.json
+1) acres_burned_annual.json
+2) annual_smoke_impact_final.json
+3) fire_counts_final.json
 
-All of these can be found in the JSON_files.rar folder from where you can extract it from.
+The acres_burned_annual.json is the file that is used to create the graph of the total area of the fires for a given year and the fire_counts_final.json consists of the total number of fires of a given year over the years 1963-2023 within 1250 miles of Helena, Montana.
+
+The annual_smoke_impact_final.json consists of the smoke estimates that is calculated for each year from 1963-2023 for Helena, Monatana.
 
 **Structure of the JSON files:**
 
@@ -53,11 +55,17 @@ For the smoke impact estimation
 
 **Value**: A list of estimate values.
 
-For the AQI estimation:
+For the acres_burned_annual.json and 
 
 **Key**: Years
 
-**Value**: AQI estimates:
+**Value**: acres burened
+
+For the fire_counts_final.json
+
+**Key**: Years
+
+**Value**: counts of the number of fires.
 
 # Images of graphs acquired from the code outputs:
 
