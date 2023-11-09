@@ -1,6 +1,6 @@
 # DATA-512-Project
 
-Link to the reflection doc: https://docs.google.com/document/d/1ePp23lR5Txo646iXEQiWodc_BTwDIUuTXuEkLR6bTD4/edit
+Link to the reflection doc: https://docs.google.com/document/d/1ePp23lR5Txo646iXEQiWodc_BTwDIUuTXuEkLR6bTD4/edit?usp=sharing
 
 # PART 1:
 
@@ -8,24 +8,34 @@ Link to the reflection doc: https://docs.google.com/document/d/1ePp23lR5Txo646iX
 
 The goal of the part 1 of this project is to answer the research question: what are the estimated smoke impacts on your assigned city for the last 60 years? by creating an annual estimate of wildfire smoke in a city that I am interested in which is Helena, Montana in my case:
 
+The goal is to create an annual estimate of wildfire smoke in Helena, Monatana. This estimate is just a number that you can eventually use to build a predictive model. Technically, smoke impact should probably be considered the health, tourism, economic or other social problems that result from the smoke. For this we'll generically call your estimate the wildfire smoke impact. We need some kind of number to represent an estimate of the smoke your city saw during each annual fire season.
+
+The smoke estimate adheres to the following conditions:
+1. The estimate only considers the last 60 years of wildland fires (1963-2023).
+2. The estimate only considers fires that are within 1250 miles of your assigned city.
+3. An annual fire season will run from May 1st through October 31st.
+
 # Data:
 
-API Licensed under: [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and [GFDL](https://www.gnu.org/licenses/fdl-1.3.html)
+Wildfire dataset: https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81
 
-API endpoint: [endpoint](https://wikimedia.org/api/rest_v1/#!/Pageviews_data/get_metrics_pageviews_aggregate_project_access_agent_granularity_start_end)  
+Example notebooks epa_air_quality_history_example.ipynb and wildfire_geo_proximity_example.ipynblicensed by: [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/)
 
-API Request Pageviews Endpoint: https://wikimedia.org/api/rest_v1/metrics/pageviews/
+Air Quality System (AQS) API: [Documentation](https://aqs.epa.gov/aqsweb/documents/data_api.html)
 
-Terms and conditions: https://www.mediawiki.org/wiki/REST_API#Terms_and_conditions
-
-API Documentation:  https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
-
-The data can be acquired from the API request endpoint, please refer to the code files (i.e notebook) in this repository for the code on how to do that.
+Additional information on AQS: [here](https://www.epa.gov/outdoor-air-quality-data/frequent-questions-about-airdata)
 
 # Code files:
 
-The only notebook file in this repository is the 512_HW1_code.ipynb file. This file consists of the some code in the beginning from the [example notebook](https://colab.research.google.com/corgiredirector?site=https%3A%2F%2Fdrive.google.com%2Ffile%2Fd%2F1XjFhd3eXx704tcdfQ4Q1OQn0LWKCRNJm%2Fview%3Fusp%3Dsharing) with a few changes which I have explicitly mentioned in the notebook. The notebook then consists of the code for acquiring the data from the Pageviews API and saving them as JSON files based on the type of access. Finally, it consists of the code for data analysis and creating time series graphs to get insights on that data based on a few specific questions which you can read through in the notebook.
+The notebooks file in this repository are:
 
+- Calculate_smoke_impact.ipynb
+- Calculate_AQI_estimate.ipynb
+
+(These below two code example was developed by Dr. David W. McDonald for use in DATA 512, a course in the UW MS Data Science degree program. This code is provided under the [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/). Revision 1.0 - August 13, 2023
+- epa_air_quality_history_example.ipynb
+- wildfire_geo_proximity_example.ipynb
+- wildfire.zip
 
 # Data Files created from the code:
 
@@ -37,84 +47,29 @@ All of these can be found in the JSON_files.rar folder from where you can extrac
 
 **Structure of the JSON files:**
 
-**Key**: The movie (or article) name, e.g., "Everything Everywhere All at Once".
+For the smoke impact estimation
 
-**Value**: A list of dictionaries. Each dictionary provides data about monthly views for the corresponding movie on Wikipedia.
+**Key**: Years
 
-**Fields in the Dictionary:**
-**project**: The Wikipedia project. In this case, it's "en.wikipedia", which refers to the English version of Wikipedia.
+**Value**: A list of estimate values.
 
-**article**: The Wikipedia article's name, using underscores in place of spaces. This matches the key of the outer dictionary. Example: "Everything_Everywhere_All_at_Once".
+For the AQI estimation:
 
-**granularity**: The granularity of the view data. It's "monthly" for our dataset, which means each entry represents one month's views.
+**Key**: Years
 
-**timestamp**: A timestamp indicating the starting time of the data. The format is YYYYMMDDHH. For example, "2020010100" refers to January 1, 2020, at 00:00 hours.
-
-**agent**: The type of agent accessing the article. In this dataset, it's always "user", referring to human readers as opposed to bots or web crawlers.
-
-**views**: The number of views for the article in the corresponding month. This is an integer value. For example, in January 2020, the article "Everything Everywhere All at Once" was viewed 1,209 times.
-
-Example structure:
-
-```python
-{
-    'article1' : [
-        {
-            "project": "en.wikipedia", 
-            "article": article1,
-            "granularity": "monthly",
-            "timestamp": month1_article1,
-            "agent": "user",
-            "views" : num_views_1_article1
-        },
-        {
-            "project": "en.wikipedia", 
-            "article": article1,
-            "granularity": "monthly",
-            "timestamp": month2_article1,
-            "agent": "user",
-            "views" : num_views_2_article1
-        },
-        ...
-    ],
-    'article2': [
-        {
-            "project": "en.wikipedia", 
-            "article": article2,
-            "granularity": "monthly",
-            "timestamp": month1_article2,
-            "agent": "user",
-            "views" : num_views_1_article2
-        },    
-        {
-            "project": "en.wikipedia", 
-            "article": article2,
-            "granularity": "monthly",
-            "timestamp": month1_article1,
-            "agent": "user",
-            "views" : num_views_2_article2
-        },
-        ...
-    ]
-}
-```
-
-Here month1_article1 is the first month of article1 and month2_article2 is the second month of article2. The format is mentioned above in the structure. The same with views num_views_1_article1 is the number of views of article1 for the first month and num_views_2_article1 is the number of views of article1 for the second month and so on.
+**Value**: AQI estimates:
 
 # Images of graphs acquired from the code outputs:
 
-The code also outputs 3 Time Series graphs of which I have taken screenshots of, the three files for that in this folder would be:
-1) Graph1.png
-2) Graph2.png
-3) Graph3.png
+The code also outputs many graphs which is present and is mentioned in detail in the google doc file like [here](https://docs.google.com/document/d/1ePp23lR5Txo646iXEQiWodc_BTwDIUuTXuEkLR6bTD4/edit?usp=sharing):
 
-The naming conventions are the same as in the notebook which would make it easier to refer to and to reproduce it.
+Time series prediction for the next 25 years based on the smoke impact estimate:
+
+![image](https://github.com/rravipra/DATA-512-Project/assets/46725716/596f593d-fc8f-41a8-b34f-36fc6b26668a)
 
 # Considerations with the Data:
 
-- It is important to note that data for every day from the start date to the end date which you are trying to extract the data from will not necessarily be available. There are a lot of days for which the data is not present. You could refer to the outputs of the DataFrame in the notebook (512_HW1_code.ipynb) of the data that we acquire that there are many NA values.
-
-- Another thing to keep in mind is that in the request_pageviews_per_article function from the example notebook where the urllib.parse.quote function is used I have added an extra parameter safe = '' so that there are no issues while acquiring the data. In the example notebook the code does not add that parameter and based on the articles that you are trying to extract the data for you might run into issues such as 'KeyError' so I would recommend that you add that parameter.
-
+- It is important to note that the when it comes to calculating the smoke impact estimates for each of the years, in my case I did not have the data for the years 2021, 2022, and 2023 so my estiamtes was only from 1963-2020.
+- Even in the data to get the AQI scores while getting the Gaseous AQI pollutants and the Particulate AQI pollutants it is not necessary that the data for both are present for all the years. I only found data for both from 1986-2023 which I have used.
 
 
