@@ -17,7 +17,7 @@ The smoke estimate adheres to the following conditions:
 
 # Data:
 
-Wildfire dataset: https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81
+Wildfire dataset: https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81 from here download the GeoJSON Files.zip and use the USGS_Wildland_Fire_Combined_Dataset.json data.
 
 Example notebooks epa_air_quality_history_example.ipynb and wildfire_geo_proximity_example.ipynblicensed by: [Creative Commons](https://creativecommons.org) [CC-BY license](https://creativecommons.org/licenses/by/4.0/)
 
