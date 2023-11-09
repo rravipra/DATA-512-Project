@@ -82,5 +82,6 @@ Time series prediction for the next 25 years based on the smoke impact estimate:
 
 - It is important to note that the when it comes to calculating the smoke impact estimates for each of the years, in my case I did not have the data for the years 2021, 2022, and 2023 so my estiamtes was only from 1963-2020.
 - Even in the data to get the AQI scores while getting the Gaseous AQI pollutants and the Particulate AQI pollutants it is not necessary that the data for both are present for all the years. I only found data for both from 1986-2023 which I have used.
+- It is also important to notice that you will not get the AQI scores for a given year from each and every station nearby so you will have to improvise on that based on what would work best for you.
 
 
