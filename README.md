@@ -15,6 +15,8 @@ The smoke estimate adheres to the following conditions:
 2. The estimate only considers fires that are within 1250 miles of your assigned city.
 3. An annual fire season will run from May 1st through October 31st.
 
+Further, another thing is trying to understand how good or bad your smoke estimate might be. Once you have developed your smoke estimate, you should compare your estimate to available AQI (Air Quality Index) data from the US EPA. The US EPA was only created in 1973, and did not really begin installing air quality monitoring stations until the early 1980s. Further, of 3000+ counties in the US, the EPA has vetted monitoring stations in only 2000 of them which is why we can't just use the AQI as an estimate for smoke impact. This means that US EPA AQI measures for any one city will need to be some kind of estimate based on monitoring stations that are nearby.
+
 # Data:
 
 Wildfire dataset: https://www.sciencebase.gov/catalog/item/61aa537dd34eb622f699df81 from here download the GeoJSON Files.zip and use the USGS_Wildland_Fire_Combined_Dataset.json data.
